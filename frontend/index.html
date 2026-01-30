@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Cayo Perico Profit Splitter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/css.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">💰 Cayo Perico Profit Splitter</h2>
+
+    <div class="card bg-secondary text-white p-4 shadow">
+        <h5>Heist Configuratie</h5>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label>Difficulty</label>
+                <select id="difficulty" class="form-select">
+                    <option value="NORMAL">Normal</option>
+                    <option value="HARD">Hard (+10% Primary)</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Primary Target</label>
+                <select id="primaryTarget" class="form-select">
+                    <option value="TEQUILA">Sinsimito Tequila ($630k)</option>
+                    <option value="RUBY_NECKLACE">Ruby Necklace ($700k)</option>
+                    <option value="BEARER_BONDS">Bearer Bonds ($770k)</option>
+                    <option value="PINK_DIAMOND">Pink Diamond ($1.3M)</option>
+                    <option value="PANTHER_STATUE">Panther Statue ($1.9M)</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Aantal Spelers</label>
+                <select id="playerCount" class="form-select" onchange="generatePlayerFields()">
+                    <option value="1">1 Speler</option>
+                    <option value="2" selected>2 Spelers</option>
+                    <option value="3">3 Spelers</option>
+                    <option value="4">4 Spelers</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="elite">
+            <label class="form-check-label" for="elite">Elite Challenge</label>
+        </div>
+
+        <hr>
+        <h5>Spelers & Cuts</h5>
+        <div id="playersContainer"></div>
+
+        <button class="btn btn-primary w-100 mt-3" onclick="calculate()">Bereken Verdeling</button>
+    </div>
+
+    <div id="errorBox" class="alert alert-danger mt-3 d-none"></div>
+
+    <div id="resultBox" class="mt-4 p-4 border rounded bg-dark text-white d-none">
+        <h4>Eindbedrag per Speler:</h4>
+        <ul id="resultsList" class="list-group list-group-flush"></ul>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

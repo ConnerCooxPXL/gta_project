@@ -78,7 +78,11 @@ public class HeistService {
             }
 
             // 3. Controleer of de tas de 100% (1.0) grens overschrijdt
-            if (currentBagWeight > 1.0001) { // Kleine marge voor double-precisie afrondingen
+
+            double MAX_BAG_WEIGHT = 1.0;
+            double MARGIN = 0.01;
+
+            if (currentBagWeight > MAX_BAG_WEIGHT + MARGIN) { // Kleine marge voor double-precisie afrondingen
                 throw new IllegalArgumentException("De tas van " + player.getName() + " is te vol (" + Math.round(currentBagWeight * 100) + "%).");
             }
         }

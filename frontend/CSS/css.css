@@ -1,0 +1,87 @@
+/* Basis layout en achtergrond */
+body {
+    /* Pad naar je afbeelding */
+    background-image: url('../images/cayo.webp');
+
+    /* Zorgt dat de afbeelding het hele scherm vult zonder te herhalen */
+    background-size: cover;
+
+    /* Zorgt dat de achtergrond op zijn plek blijft staan als je scrollt */
+    background-attachment: fixed;
+
+    /* Centreert de afbeelding */
+    background-position: center;
+
+    /* Voorkomt dat de afbeelding gaat 'tegelen' */
+    background-repeat: no-repeat;
+
+    /* Optioneel: Maak de tekst beter leesbaar door een donkere overlaag */
+
+    color: #f8f9fa;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+}
+
+h2 {
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    color: #ffc107; /* Goud-geel voor de Heist sfeer */
+}
+
+/* De kaarten (Cards) */
+.card {
+    border: none;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+}
+
+.bg-secondary {
+    background-color: rgba(52, 58, 64, 0.9) !important;
+}
+
+.player-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    border-left: 5px solid #0d6efd; /* Blauwe accent-lijn */
+}
+
+.player-card:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+
+/* Loot sectie binnen de speler-kaart */
+.loot-section {
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.loot-item {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Input velden */
+.form-control, .form-select {
+    background-color: #2b3035 !important;
+    border: 1px solid #495057;
+    color: #fff !important;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.input-group-text {
+    background-color: #495057;
+    border: 1px solid #495057;
+    color: white;
+}
+
+/* Knoppen */
+.btn-primary
