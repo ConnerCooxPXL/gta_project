@@ -1,6 +1,6 @@
 # Stap 1: Build de applicatie met Maven
 FROM maven:3.8.4-openjdk-17 AS build
-COPY . /app
+COPY src/main/java/be/pxl/backend /app
 WORKDIR /app
 RUN mvn clean package -DskipTests
 
