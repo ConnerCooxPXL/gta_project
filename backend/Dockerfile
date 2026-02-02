@@ -1,11 +1,12 @@
 # Stap 1: Build de applicatie met Maven
 FROM maven:3.8.4-openjdk-17 AS build
-COPY src/main/java/be/pxl/backend /app
 WORKDIR /app
+COPY . .
 RUN mvn clean package -DskipTests
 
-# Stap 2: Draai de applicatie
-FROM openjdk:17-jdk-slim
+# Stap 2: Draai de applicatie (Nieuwe stabiele versie)
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
