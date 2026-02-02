@@ -102,8 +102,7 @@ function updateBagProgress(playerIndex) {
     const progressBar = document.getElementById(`bag-bar-${playerIndex}`);
 
 
-    const percentage = Math.round
-    (totalWeight * 100)
+    const percentage = Math.round(totalWeight * 100);
 
     progressBar.style.width = Math.min(percentage, 100) + "%";
     progressBar.innerText = percentage + "% Vol";
@@ -174,6 +173,14 @@ async function calculate() {
         return; // Stop de functie hier
     }
 
+    const overfilledBags = document.querySelectorAll('.progress-bar.bg-danger');
+    if (overfilledBags.length > 0) {
+        const errorBox = document.getElementById('errorBox');
+        errorBox.innerText = "Eén of meerdere tassen zijn te vol (>100%)!";
+        errorBox.classList.remove('d-none');
+        return; // STOP de functie hier
+    }
+
     document.querySelectorAll('.player-card').forEach((card, index) => {
         const cut = parseInt(card.querySelector('.p-cut').value) || 0;
         totalCut += cut;
@@ -193,7 +200,11 @@ async function calculate() {
         });
     });
 
-    if (totalCut !== 100) return; // validateCuts laat de error al zien
+    if (totalCut !== 100) {
+        errorBox.innerText = `Totaal percentage ${totalCut}%. Moet 100% zijn.`;
+        errorBox.classList.remove('d-none');
+        return; // HIER wordt het versturen echt tegengehouden
+    }// validateCuts laat de error al zien
 
     try {
         const requestData = {
