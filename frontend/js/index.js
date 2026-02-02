@@ -215,7 +215,7 @@ async function calculate() {
             players: players
         };
 
-        const response = await fetch('http://localhost:8080/api/heist/calculate', {
+        const response = await fetch('https://gta-project.onrender.com', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(requestData)
