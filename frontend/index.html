@@ -20,6 +20,7 @@
                     <option value="HARD">Hard (+10% Primary)</option>
                 </select>
             </div>
+
             <div class="col-md-4 mb-3">
                 <label>Primary Target</label>
                 <select id="primaryTarget" class="form-select">
@@ -30,6 +31,7 @@
                     <option value="PANTHER_STATUE">Panther Statue ($1.9M)</option>
                 </select>
             </div>
+
             <div class="col-md-4 mb-3">
                 <label>Aantal Spelers</label>
                 <select id="playerCount" class="form-select" onchange="generatePlayerFields()">
@@ -40,6 +42,20 @@
                 </select>
             </div>
         </div>
+
+        <div class="mb-3">
+            <label for="miniVault" class="form-label text-warning">Mini Vault Cash (Optioneel)</label>
+            <div class="input-group has-validation">
+                <span class="input-group-text bg-dark text-white">$</span>
+                <input type="number" id="miniVault" class="form-control bg-dark text-white border-secondary" value="0">
+                <div class="invalid-feedback">
+                    Moet $0 zijn of tussen de $50.000 en $100.000.
+                </div>
+            </div>
+            <small class="text-muted" id="melding"> tussen de $50.000 en $100.000 (of 0 bij geen mini vault).</small>
+        </div>
+
+
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" id="elite">
             <label class="form-check-label" for="elite">Elite Challenge</label>

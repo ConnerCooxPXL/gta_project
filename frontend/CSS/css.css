@@ -28,6 +28,10 @@ h2 {
     color: #ffc107; /* Goud-geel voor de Heist sfeer */
 }
 
+.form-label {
+    color: #fff !important;
+}
+
 /* De kaarten (Cards) */
 .card {
     border: none;
@@ -81,6 +85,14 @@ h2 {
     background-color: #495057;
     border: 1px solid #495057;
     color: white;
+}
+
+.text-muted {
+    color: #fff !important;
+}
+
+.invalid-feedback {
+    color: red !important;
 }
 
 /* Knoppen */

@@ -7,13 +7,15 @@ import java.util.Map;
 public class HeistDto {
     private Difficulty difficulty;
     private boolean elite;
+    private double miniVault;
     private PrimaryTarget primaryTarget;
     private List<PlayerDto> players;
 
-    public HeistDto(Difficulty difficulty, PrimaryTarget primaryTarget, boolean elite, List<PlayerDto> players) {
+    public HeistDto(Difficulty difficulty, PrimaryTarget primaryTarget, boolean elite, double miniVault,  List<PlayerDto> players) {
         this.difficulty = difficulty;
         this.primaryTarget = primaryTarget;
         this.elite = elite;
+        this.miniVault = miniVault;
         this.players = players;
     }
 
@@ -31,6 +33,14 @@ public class HeistDto {
 
     public void setElite(boolean elite) {
         this.elite = elite;
+    }
+
+    public double getMiniVault() {
+        return miniVault;
+    }
+
+    public void setMiniVault(double miniVault) {
+        this.miniVault = miniVault;
     }
 
     public PrimaryTarget getPrimaryTarget() {

@@ -36,7 +36,10 @@ public class HeistService {
             totalAfterFees += request.getDifficulty().getEliteBonus();
         }
 
-        // 5. Verdeel het restbedrag op basis van de cuts
+        // 5. voeg mini vault toe
+        totalAfterFees += request.getMiniVault();
+
+        // 6. Verdeel het restbedrag op basis van de cuts
         for (PlayerDto playerDto : request.getPlayers()) {
             double finalShare = totalAfterFees * (playerDto.getPlayerCut() / 100.0);
             map.put(playerDto.getName(), (double) Math.round(finalShare));

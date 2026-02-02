@@ -102,7 +102,8 @@ function updateBagProgress(playerIndex) {
     const progressBar = document.getElementById(`bag-bar-${playerIndex}`);
 
 
-    const percentage = Math.round(totalWeight * 100)
+    const percentage = Math.round
+    (totalWeight * 100)
 
     progressBar.style.width = Math.min(percentage, 100) + "%";
     progressBar.innerText = percentage + "% Vol";
@@ -166,6 +167,13 @@ async function calculate() {
     const players = [];
     let totalCut = 0;
 
+    const miniVaultValue = parseFloat(document.getElementById('miniVault').value) || 0;
+
+    const vaultInput = document.getElementById('miniVault');
+    if (vaultInput.classList.contains('is-invalid')) {
+        return; // Stop de functie hier
+    }
+
     document.querySelectorAll('.player-card').forEach((card, index) => {
         const cut = parseInt(card.querySelector('.p-cut').value) || 0;
         totalCut += cut;
@@ -191,6 +199,7 @@ async function calculate() {
         const requestData = {
             difficulty: document.getElementById('difficulty').value,
             elite: document.getElementById('elite').checked,
+            miniVault: miniVaultValue,
             primaryTarget: document.getElementById('primaryTarget').value,
             players: players
         };
@@ -216,3 +225,30 @@ async function calculate() {
         errorBox.classList.remove('d-none');
     }
 }
+
+// Wacht tot de pagina geladen is
+document.addEventListener('DOMContentLoaded', () => {
+    const miniVaultInput = document.getElementById('miniVault');
+
+    if (miniVaultInput) {
+        miniVaultInput.addEventListener('input', function() {
+            const val = parseFloat(this.value);
+            // We tellen een leeg veld als 0
+            //const numericVal = isNaN(val) ? 0 : val;
+
+            // De logica: 0 of tussen 50k en 100k
+            const isValid = !isNaN(val) && (val === 0 || (val >= 50000 && val <= 100000));
+
+            if (isValid) {
+                this.classList.remove('is-invalid');
+                document.getElementById("melding").style.display = 'block';
+                // Optioneel: voeg 'is-valid' toe voor een groene rand
+                // this.classList.add('is-valid');
+            } else {
+                this.classList.remove('is-valid');
+                this.classList.add('is-invalid');
+                document.getElementById("melding").style.display = 'none';
+            }
+        });
+    }
+});
