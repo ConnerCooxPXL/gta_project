@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // 2. Weights ophalen van de Backend
 async function fetchWeights() {
     try {
-        const response = await fetch('http://localhost:8080/api/heist/loot-weights');
+        const response = await fetch('https://gta-project.onrender.com/api/heist/loot-weights');
         LOOT_WEIGHTS = await response.json();
     } catch (err) {
         console.error("Kon weights niet laden, gebruik fallback:", err);
