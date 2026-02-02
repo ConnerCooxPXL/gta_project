@@ -1,10 +1,10 @@
-# Stap 1: Build de applicatie met Maven
-FROM maven:3.8.4-openjdk-21 AS build
+# Stap 1: Build de applicatie met de nieuwste Maven en Java 21+ ondersteuning
+FROM maven:3-eclipse-temurin-21-alpine AS build
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Stap 2: Draai de applicatie (Nieuwe stabiele versie)
+# Stap 2: Draai de applicatie op Java 21 (meest stabiele moderne versie)
 FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
